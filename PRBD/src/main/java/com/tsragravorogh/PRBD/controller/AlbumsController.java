@@ -26,6 +26,8 @@ public class AlbumsController {
 
     private final PhotoService photoService;
 
+    private boolean isSorted = false;
+
     public AlbumsController(AlbumService albumService, PhotoService photoService) {
         this.albumService = albumService;
         this.photoService = photoService;
@@ -44,6 +46,26 @@ public class AlbumsController {
         List<Album> userAlbumsByUserId = albumService.getAlbumsByUserId(UserService.getUser().getId());
         UserService.getUser().setUserAlbums(userAlbumsByUserId);
         model.addAttribute("albums", userAlbumsByUserId);
+        model.addAttribute("count", userAlbumsByUserId.size());
+        return "personal_page";
+    }
+
+    @GetMapping("/albums/sort/{id}")
+    public String sortAlbums(@PathVariable Integer id, Model model) {
+        User user = UserService.getUser();
+        model.addAttribute("user", user);
+        List<Album> sortedList;
+        if(!isSorted) {
+            sortedList = albumService.getSortedAlbumsByUserId(user.getId());
+            model.addAttribute("albums", sortedList);
+            model.addAttribute("count", sortedList.size());
+            isSorted=true;
+        } else {
+            sortedList = albumService.getAlbumsByUserId(user.getId());
+            model.addAttribute("albums", sortedList);
+            model.addAttribute("count", sortedList.size());
+            isSorted=false;
+        }
         return "personal_page";
     }
 
@@ -82,6 +104,7 @@ public class AlbumsController {
         model.addAttribute("user", UserService.getUser());
         UserService.getUser().setUserAlbums(albumsByUserId);
         model.addAttribute("albums", albumsByUserId);
+        model.addAttribute("count", albumsByUserId.size());
         return "personal_page";
     }
 
@@ -92,6 +115,7 @@ public class AlbumsController {
         UserService.getUser().setUserAlbums(albums);
         model.addAttribute("user", UserService.getUser());
         model.addAttribute("albums", albums);
+        model.addAttribute("count", albums.size());
         return "personal_page";
     }
 }

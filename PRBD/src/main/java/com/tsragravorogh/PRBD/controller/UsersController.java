@@ -51,6 +51,7 @@ public class UsersController {
         List<Album> albums = user.getUserAlbums();
         model.addAttribute("albums", albums);
         model.addAttribute("user", user);
+        model.addAttribute("count", albums.size());
         return "personal_page";
     }
 

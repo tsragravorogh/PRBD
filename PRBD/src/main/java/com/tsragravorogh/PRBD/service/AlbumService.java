@@ -43,6 +43,10 @@ public class AlbumService {
         return albumRepository.findAllByUserId(id);
     }
 
+    public List<Album> getSortedAlbumsByUserId(Integer id){
+        return albumRepository.findAllByUserIdOrderByNameAsc(id);
+    }
+
     public void updateAlbum(Album album) {
         albumRepository.save(album);
     }

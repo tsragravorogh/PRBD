@@ -11,7 +11,7 @@
 
 <div class="container">
     <div class="row">
-        <h1>List Albums </h1>
+        <h1>Amount of Albums: <span th:text="${count}"></span> </h1>
     </div>
     <div class="row">
         <div class="col-lg-3">
@@ -41,7 +41,7 @@
             <td>
                 <a th:href="@{/albums/edit/{id}(id=${album.id})}" class="btn btn-primary">Update</a>
                 <a th:href="@{/albums/delete/{id}(id=${album.id})}" class="btn btn-danger">Delete</a>
-                <a th:href="@{/albums/sort}" class="btn bnt-info">Sort alphabetically</a>
+                <a th:href="@{/albums/sort/{id}(id=${album.id})}" class="btn btn-info">Sort alphabetically</a>
             </td>
         </tr>
         </tbody>
