@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="D:\study\3 course\PRBD\src\main\resources\static\css\style.css">
+</head>
+<body>
+<!--<div class="login-page">-->
+<!--    <div class="form" >-->
+<!--        <form class="register-form"  method="post" action="/register" th:object="${registerRequest}">-->
+<!--            <input type="text" name = "name" placeholder="name"/>-->
+<!--            <input type="text" name = "surname" placeholder="surname"/>-->
+<!--            <input type="text" name = "email" placeholder="email"/>-->
+<!--            <input type="password" name = "password" placeholder="password"/>-->
+<!--            <button>create</button>-->
+<!--            <p class="message">Already registered? <a href="/login">Sign In</a></p>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<form class="form-horizontal" method="POST" action="/register" th:object="${registerRequest}">
+    <fieldset>
+        <div id="legend">
+            <legend class="">Register</legend>
+        </div>
+        <div class="control-group">
+            <!-- Username -->
+            <div class="controls">
+                <input type="text" name = "name" placeholder="name"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- E-mail -->
+            <div class="controls">
+                <input type="text" name = "surname" placeholder="surname"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Password-->
+            <div class="controls">
+                <input type="text" name = "email" placeholder="email"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Password -->
+            <div class="controls">
+                <input type="password" name = "password" placeholder="password"/>
+                <p class="help-block">Please password</p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+                <button class="btn btn-success">Register</button>
+            </div>
+        </div>
+
+        <p class="message">Already registered? <a href="/login">Sign In</a></p>
+    </fieldset>
+</form>
+
+</body>
+</html>

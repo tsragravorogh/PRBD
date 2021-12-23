@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha512-oBTprMeNEKCnqfuqKd6sbvFzmFQtlXS3e0C/RGFV0hD6QzhHV+ODfaQbAlmY6/q0ubbwlAM/nCJjkrgA3waLzg==" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1 align="center">Welcome to personal page, <span th:text="${user.getName()}"></span></h1>
+
+<div class="container">
+    <div class="row">
+        <h1>List Albums </h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href = "@{/albums/new}" class="btn btn-primary btn-sm mb-3"> Add Album</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href = "@{/posts}" class="btn btn-info btn-sm mb-3"> Your Posts</a>
+        </div>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Album name</th>
+            <th>Photos</th>
+            <th>Setting up</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "album: ${albums}">
+            <td th:text="${album.getName()}"></td>
+            <td>
+                <a th:href="@{/albums/{id}(id=${album.getId()})}" class="btn btn-secondary">Open</a>
+            </td>
+            <td>
+                <a th:href="@{/albums/edit/{id}(id=${album.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/albums/delete/{id}(id=${album.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/albums/sort}" class="btn bnt-info">Sort alphabetically</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

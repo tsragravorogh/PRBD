@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new photo</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center"> Create new photo </h1>
+            <div class="card-body">
+                <form th:action="@{/photos/{albumId}(albumId = ${albumId})}" th:object="${photo}" method="POST">
+                    <div class="form-group">
+                        <label> Title </label>
+                        <input
+                                type="text"
+                                name = "Link"
+                                th:field = "*{link}"
+                                class="form-control"
+                                placeholder="Enter Link"
+                        />
+                    </div>
+
+                    <div class="footer-body">
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
